@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-white flex flex-col">
+      <main className="bg-white flex flex-col box-border p-10">
         <h1 className="text-3xl font-bold self-center py-10">
           文字数チェッカー
         </h1>
@@ -24,10 +24,16 @@ export default function Home() {
           onChange={handleChange}
           rows="10"
           cols="60"
-          className="bg-slate-200 text-slate-800 rounded outline text-lg p-4 self-center m-10"
+          className="bg-slate-200 text-slate-800 rounded outline text-lg p-4 self-center m-10 w-full max-w-xl"
         />
         <div className="self-center m-10">
-          <p className="text-3xl font-bold ">{content.length}</p>
+          <p className="text-xl">
+            計
+            <strong className="text-3xl font-bold px-1">
+              {content.length}
+            </strong>
+            文字
+          </p>
         </div>
       </main>
     </>
