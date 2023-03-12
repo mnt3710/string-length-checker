@@ -7,6 +7,10 @@ export default function Home() {
   const handleChange = (event: any) => {
     setContent(event.target.value)
   }
+
+  const spaceCount = (content: string): number => {
+    return content.split("").filter((x) => x === "\n").length
+  }
   return (
     <>
       <Head>
@@ -22,15 +26,13 @@ export default function Home() {
         <textarea
           value={content}
           onChange={handleChange}
-          rows="10"
-          cols="60"
           className="bg-slate-200 text-slate-800 rounded outline text-lg p-4 self-center m-10 w-full max-w-xl"
         />
         <div className="self-center m-10">
           <p className="text-xl">
             計
             <strong className="text-3xl font-bold px-1">
-              {content.length}
+              {content.length - spaceCount(content.toString())}
             </strong>
             文字
           </p>
