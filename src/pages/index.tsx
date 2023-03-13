@@ -8,9 +8,13 @@ export default function Home() {
     setContent(event.target.value)
   }
 
-  const spaceCount = (content: string): number => {
-    return content.split("").filter((x) => x === "\n").length
+  const checkLetterLength = (content: string, letter: string): number => {
+    const letterLength = content.split("").filter((x) => x === letter).length
+    return letterLength
   }
+
+  const contentStr = content.toString()
+
   return (
     <>
       <Head>
@@ -19,23 +23,34 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-white flex flex-col box-border p-10">
+      <main className="bg-white dark:bg-gray-800 flex flex-col box-border p-10">
         <h1 className="text-3xl font-bold self-center py-10">
           文字数チェッカー
         </h1>
         <textarea
           value={content}
           onChange={handleChange}
-          className="bg-slate-200 text-slate-800 rounded outline text-lg p-4 self-center m-10 w-full max-w-xl"
+          className="bg-slate-200 text-slate-800 rounded outline text-lg p-4 self-center m-10 w-full max-w-2xl h-96 max-h-screen"
         />
         <div className="self-center m-10">
           <p className="text-xl">
             計
             <strong className="text-3xl font-bold px-1">
-              {content.length - spaceCount(content.toString())}
+              {content.length - checkLetterLength(contentStr, "/n")}
             </strong>
             文字
           </p>
+        </div>
+        <div className="outline rounded p-2 m-4">
+          <p>
+            空白文字(合計) :
+            {checkLetterLength(contentStr, " ") +
+              checkLetterLength(contentStr, "　")}
+          </p>
+          <p>空白文字(半角) : {checkLetterLength(contentStr, " ")}</p>
+          <p>空白文字(全角) : {checkLetterLength(contentStr, "　")}</p>
+          <p>句点 : {checkLetterLength(contentStr, "、")}</p>
+          <p>読点 : {checkLetterLength(contentStr, "。")}</p>
         </div>
       </main>
     </>
