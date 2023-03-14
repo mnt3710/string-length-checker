@@ -29,14 +29,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-white dark:bg-gray-800 flex flex-col box-border p-10">
-        <h1 className="text-3xl font-bold self-center py-10">
+      <main className="bg-white dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-700 flex flex-col box-border p-10 dark:text-slate-200">
+        <h1 className="text-3xl font-bold self-center py-10 ">
           文字数チェッカー
         </h1>
         <div className="w-full max-w-2xl self-center flex flex-col">
           <button
             onClick={paste}
-            className="px-4 py-2 outline w-20 rounded self-end"
+            className="px-4 py-2 outline w-20 rounded self-end outline-2 bg-slate-200 dark:text-slate-900"
           >
             paste
           </button>
