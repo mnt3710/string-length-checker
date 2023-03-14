@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useState } from "react"
 
 export default function Home() {
-  const [content, setContent] = useState([])
+  const [content, setContent] = useState<string>("")
 
   const handleChange = (event: any) => {
     setContent(event.target.value)
@@ -14,6 +14,12 @@ export default function Home() {
   }
 
   const contentStr = content.toString()
+
+  const paste = async () => {
+    await global.navigator.clipboard
+      .readText()
+      .then((clipText) => setContent(clipText))
+  }
 
   return (
     <>
@@ -27,11 +33,19 @@ export default function Home() {
         <h1 className="text-3xl font-bold self-center py-10">
           文字数チェッカー
         </h1>
-        <textarea
-          value={content}
-          onChange={handleChange}
-          className="bg-slate-200 text-slate-800 rounded outline text-lg p-4 self-center m-10 w-full max-w-2xl h-96 max-h-screen"
-        />
+        <div className="w-full max-w-2xl self-center flex flex-col">
+          <button
+            onClick={paste}
+            className="px-4 py-2 outline w-20 rounded self-end"
+          >
+            paste
+          </button>
+          <textarea
+            value={content}
+            onChange={handleChange}
+            className="bg-slate-200 text-slate-800 rounded outline text-lg p-4 my-8 h-96 max-h-screen"
+          />
+        </div>
         <div className="self-center m-10">
           <p className="text-xl">
             計
