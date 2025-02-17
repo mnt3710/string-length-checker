@@ -8,3 +8,5 @@
 textarea の style に苦労した
 max-width と margin ではレスポンシブに対応できなかった。
 main に padding をつけて textarea に w-full をつければレスポンシブ対応できた。
+
+https://string-length-checker.vercel.app/
